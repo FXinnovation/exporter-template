@@ -26,6 +26,10 @@ vet:
 	@echo ">> vetting code"
 	@$(GO) vet $(pkgs)
 
+dependencies: ## download the dependencies
+	rm -rf Gopkg.lock vendor/
+	dep ensure
+
 build: promu
 	@echo ">> building binaries"
 	@$(PROMU) build --prefix $(PREFIX)
@@ -43,4 +47,4 @@ promu:
 		GOARCH=$(subst x86_64,amd64,$(patsubst i%86,386,$(shell uname -m))) \
 		$(GO) get -u github.com/prometheus/promu
 
-.PHONY: all style format build test vet tarball promu
+.PHONY: all style format dependencies build test vet tarball promu
