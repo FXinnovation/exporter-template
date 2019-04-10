@@ -29,6 +29,7 @@ func init() {
 }
 
 func main() {
+	kingpin.Version(version.Print("my_exporter"))
 	kingpin.HelpFlag.Short('h')
 	kingpin.Parse()
 
