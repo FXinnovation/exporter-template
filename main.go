@@ -6,7 +6,12 @@ import (
 
 	"github.com/prometheus/client_golang/prometheus"
 	"github.com/prometheus/client_golang/prometheus/promhttp"
+	"github.com/prometheus/common/version"
 )
+
+func init() {
+	prometheus.MustRegister(version.NewCollector("my_exporter"))
+}
 
 func main() {
 	collector := NewCollector()
