@@ -32,6 +32,9 @@ func main() {
 	kingpin.HelpFlag.Short('h')
 	kingpin.Parse()
 
+	log.Println("Starting exporter", version.Info())
+	log.Println("Build context", version.BuildContext())
+
 	config = loadConfig(*configFile)
 
 	collector := NewCollector()
