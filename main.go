@@ -41,6 +41,16 @@ func main() {
 	prometheus.MustRegister(collector)
 
 	http.Handle(*metricsPath, promhttp.Handler())
+	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+		w.Write([]byte(`<html>
+			<head><title>My Exporter</title></head>
+			<body>
+			<h1>My Exporter</h1>
+			<p><a href="` + *metricsPath + `">Metrics</a></p>
+			</body>
+			</html>`))
+	})
+
 	log.Println("Beginning to serve on address ", *listenAddress)
 	log.Fatal(http.ListenAndServe(*listenAddress, nil))
 }
