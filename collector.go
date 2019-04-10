@@ -19,7 +19,7 @@ func NewCollector() *Collector {
 	}
 }
 
-// Describe implemented with dummy data to satisfy interface.
+// Describe to satisfy the collector interface.
 func (c *Collector) Describe(ch chan<- *prometheus.Desc) {
 	ch <- c.firstMetric
 }
