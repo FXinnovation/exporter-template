@@ -3,5 +3,5 @@ LABEL maintainer="FXinnovation CloudToolDevelopment <CloudToolDevelopment@fxinno
 
 COPY exporter-template /bin/exporter-template
 
-EXPOSE      9100
+EXPOSE      1984
 ENTRYPOINT  [ "/bin/exporter-template" ]
