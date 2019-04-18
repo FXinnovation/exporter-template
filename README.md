@@ -35,6 +35,18 @@ make test
 
 The template listen on port 1984 by default, be sure to change that port in order to suit your new exporter needs.
 
+## Docker image
+
+You can build a docker image using:
+```bash
+make docker
+```
+The resulting image is named `fxinnovation/exporter-template:{git-branch}`.
+It exposes port 1984 and expects the config in /config.yml. To configure it, you can bind-mount a config from your host: 
+```
+$ docker run -p 1984 -v /path/on/host/config.yml:/config.yml fxinnovation/exporter-template:master
+```
+
 ## Contributing
 
 Refer to [CONTRIBUTING.md](https://github.com/FXinnovation/exporter-template/blob/master/CONTRIBUTING.md).
