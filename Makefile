@@ -42,6 +42,10 @@ docker:
 	@echo ">> building docker image"
 	@docker build -t "$(DOCKER_REPO)/$(DOCKER_IMAGE_NAME):$(DOCKER_IMAGE_TAG)" .
 
+dockerlint:
+	@echo ">> linting Dockerfile"
+	@docker run --rm -i hadolint/hadolint < Dockerfile
+
 promu:
 	@GOOS=$(shell uname -s | tr A-Z a-z) \
 		GOARCH=$(subst x86_64,amd64,$(patsubst i%86,386,$(shell uname -m))) \
